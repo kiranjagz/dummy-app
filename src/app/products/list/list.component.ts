@@ -7,14 +7,29 @@ import { Product, ProductsService, Result } from '../products.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
+
+  borderColor: string = "pink";
+  isLoading = true;
   products: Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'description', 'price'];
 
   constructor(private productsService: ProductsService) {
-    this.productsService.getData().subscribe((data) => {
-      this.products = data.products;
-      console.log(this.products);
-    });
+
+    this.productsService.getData()
+    .subscribe(
+      {
+        next: (data: any) : void => {
+          this.products = data.products;
+          console.log(this.products);
+          this.isLoading = false;
+        },
+
+        error: (err: any) : void => {
+          this.isLoading = true;
+          console.log(err);
+        }
+      }
+    );
   }
 
   ngOnInit(): void {

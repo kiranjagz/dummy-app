@@ -9,7 +9,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<Result> {
-    const url = 'https://dummyjson.com/products';
+    const url = 'https://dummyjson.com/products3/';
     return this.http.get<Result>(url);
   }
 }
