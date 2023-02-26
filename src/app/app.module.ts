@@ -10,6 +10,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { ListComponent } from './products/list/list.component';
 import { CreateComponent } from './products/create/create.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, ListComponent, CreateComponent],
   imports: [
@@ -18,6 +20,8 @@ import { CreateComponent } from './products/create/create.component';
     AppRoutingModule,
     AngularMaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
