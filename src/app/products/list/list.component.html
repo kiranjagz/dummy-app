@@ -6,7 +6,7 @@
 <mat-card>
   <mat-card-content>
 
-    <div style="padding: 10px 10px 10px 10px;" [ngStyle]="borderColor == 'pink' ? {'background-color': 'hotpink'} : {'background-color': 'blue'}" *ngIf="!isLoading">
+    <div [ngStyle]="borderColor == 'pink' ? {'background-color': 'hotpink', 'padding': '1px'} : {'background-color': 'blue', 'padding' : '5px'}" *ngIf="!isLoading">
 
       <table mat-table [dataSource]="products">
     

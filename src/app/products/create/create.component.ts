@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Product } from '../Product';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-create',
@@ -8,19 +10,26 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateComponent {
   form: FormGroup = new FormGroup({});
+  product: Product;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private productsService: ProductsService) { 
+    this.product = new Product();
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(5)]],
-      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
+      title: [null, [Validators.required, Validators.minLength(5)]]
+      // email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]]
     });
   }
 
   saveDetails(form: any) {
-    console.log(form.value.name);
-    console.log(form.value.email);
+
+    this.productsService.saveProduct(form.value).subscribe(data => {
+      this.product = data;
+      console.log(this.product);
+    });
+
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(form.value, null, 4));
   }
 }
