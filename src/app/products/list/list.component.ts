@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { Result } from "../Result";
-import { Product } from "../Product";
+import { Result } from '../models/Result';
+import { Product } from '../models/Product';
 
 @Component({
   selector: 'app-list',
@@ -9,29 +9,23 @@ import { Product } from "../Product";
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-
-  borderColor: string = "pink";
+  borderColor: string = 'pink';
   isLoading = true;
   products: Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'description', 'price'];
 
   constructor(private productsService: ProductsService) {
-
-    this.productsService.getData()
-    .subscribe(
-      {
-        next: (data: any) : void => {
-          this.products = data.products;
-          console.log(this.products);
-          this.isLoading = false;
-        },
-
-        error: (err: any) : void => {
-          this.isLoading = true;
-          console.log(err);
-        }
-      }
-    );
+    this.productsService.getData().subscribe({
+      next: (data: any): void => {
+        this.products = data.products;
+        console.log(this.products);
+        this.isLoading = false;
+      },
+      error: (err: any): void => {
+        this.isLoading = true;
+        console.log(err);
+      },
+    });
   }
 
   ngOnInit(): void {

@@ -1,20 +1,18 @@
-
-<div style="padding: 10px 10px 10px 10px;">
-    <mat-card>
-        <mat-card-content>
-           
-            <div class="container">
-                <form [formGroup]="form" (ngSubmit)="saveDetails(form)">
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Title</mat-label>
-                            <input matInput maxlength="15" inputmode="tel" placeholder="Type title" formControlName="title" #titleInput>
-                            <mat-hint>Mini text is 5: {{ titleInput.value.length }}/5</mat-hint>
-                            <mat-error>title is required</mat-error>
-                            <mat-error *ngIf="form.controls['title'].errors?.['minlength']">Please enter more than 5 characters</mat-error>
-                        </mat-form-field>
-                    </div>
-                    <!-- <div>  
+<div style="padding: 10px 10px 10px 10px">
+  <mat-card>
+    <mat-card-content>
+      <div class="container">
+        <form [formGroup]="form" (ngSubmit)="saveDetails(form)">
+          <div>
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input matInput maxlength="15" inputmode="tel" placeholder="Type title" formControlName="title" #titleInput/>
+              <mat-hint>Mini text is 5: {{ titleInput.value.length }}/5</mat-hint>
+              <mat-error>title is required</mat-error>
+              <mat-error *ngIf="form.controls['title'].errors?.['minlength']">Please enter more than 5 characters</mat-error>
+            </mat-form-field>
+          </div>
+          <!-- <div>  
                         <mat-form-field>
                             <mat-label>Email Address:</mat-label>
                             <input matInput type="email" formControlName="email" placeholder="Your email">
@@ -24,18 +22,15 @@
                             <mat-error *ngIf="form.controls['email'].errors?.['pattern']">Please enter valid email</mat-error>
                         </mat-form-field>       
                     </div> -->
-                    <div style="float: right;">
-                        <div mat-dialog-actions>
-                            <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- <div>{{ form.value | json }}</div> -->
+          <div style="float: right">
+            <div mat-dialog-actions>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+                Submit
+              </button>
             </div>
-
-        </mat-card-content>
-    </mat-card>
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
-
-
-
